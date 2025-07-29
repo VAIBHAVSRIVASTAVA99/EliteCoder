@@ -37,7 +37,7 @@ def power_up():
 
 # Your legendary code starts here
 power_up()` ,
-    java: `// Welcome to Elite Code Editor
+    java: `// Welcome to Ezlite Code Editor
 public class Main {
     public static void main(String[] args) {
         System.out.println("Reaching elite level!");
