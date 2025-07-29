@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Production Deployment
+
+1. **Set environment variables**
+   - Copy `.env.example` to `.env` and fill in your values (e.g., `MONGODB_URI`).
+
+2. **Build the app**
+   ```bash
+   npm run build
+   ```
+
+3. **Start the app**
+   ```bash
+   npm start
+   ```
+
+The app will run on [http://localhost:3000](http://localhost:3000) by default.
+
+For cloud/VPS deployment, use a process manager like [PM2](https://pm2.keymetrics.io/) or a platform like Vercel, Railway, or Render.
