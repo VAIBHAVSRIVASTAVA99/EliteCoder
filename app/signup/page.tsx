@@ -24,14 +24,16 @@ export default function SignupPage() {
       const res = await fetch("/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        cache: "no-store",
         body: JSON.stringify({ name, email, password })
       })
       const data: { success?: boolean; message?: string; error?: string } = await res.json()
       if (res.ok && data.success) {
         toast.success("Signup successful!")
         setTimeout(() => {
-          router.push("/editor")
-        }, 800)
+          if (typeof window !== "undefined") window.location.assign("/editor")
+        }, 300)
       } else {
         toast.error(data.message || data.error || "Signup failed")
       }
