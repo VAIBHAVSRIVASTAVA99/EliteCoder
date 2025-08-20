@@ -30,8 +30,8 @@ export default function SignupPage() {
       if (res.ok && data.success) {
         toast.success("Signup successful!")
         setTimeout(() => {
-          router.push("/login")
-        }, 1000)
+          router.push("/editor")
+        }, 800)
       } else {
         toast.error(data.message || data.error || "Signup failed")
       }

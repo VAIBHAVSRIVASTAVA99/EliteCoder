@@ -4,17 +4,7 @@ import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import type { ReactNode } from "react";
-
-function ConsoleSilencer() {
-  if (typeof window !== "undefined" && process.env.NODE_ENV === "production") {
-    console.log = () => {};
-    console.error = () => {};
-    console.warn = () => {};
-    console.info = () => {};
-    console.debug = () => {};
-  }
-  return null;
-}
+import ConsoleSilencer from "@/components/ConsoleSilencer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>        
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ConsoleSilencer />
         {children}
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="dark" />
