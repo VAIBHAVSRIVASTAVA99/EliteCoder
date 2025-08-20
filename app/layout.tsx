@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import type { ReactNode } from "react";
 import ConsoleSilencer from "@/components/ConsoleSilencer";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <Script id="silence-console-pre" strategy="beforeInteractive">
+          {`(function(){try{if('${process.env.NODE_ENV}'==='production'){var n=function(){};var c=window.console||{};['log','error','warn','info','debug'].forEach(function(k){try{c[k]=n}catch(e){}});window.console=c;}}catch(_){}})();`}
+        </Script>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ConsoleSilencer />
         {children}

@@ -6,7 +6,15 @@ export async function POST(req: NextRequest) {
     const { name, email, password } = await req.json();
     const result = await signupUser(name, email, password);
     if (result.success) {
-      return NextResponse.json(result);
+      const res = NextResponse.json(result);
+      res.cookies.set("session", email, {
+        httpOnly: true,
+        path: "/",
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+      return res;
     } else {
       return NextResponse.json(result, { status: 400 });
     }
