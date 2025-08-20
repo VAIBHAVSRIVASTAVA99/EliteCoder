@@ -24,7 +24,6 @@ export default function EditorPage() {
   const defaultCode = {
     javascript: `// Welcome to Elite Code Editor
 function powerUp() {
-  console.log("Reaching elite level!");
   return power * 1000;
 }
 
@@ -32,7 +31,6 @@ function powerUp() {
 powerUp();`,
     python: `# Welcome to Elite Code Editor
 def power_up():
-    print("Reaching elite level!")
     return power * 1000
 
 # Your legendary code starts here
@@ -125,7 +123,6 @@ func main() {
         setSavedCodes(response.data.snippets);
       }
     } catch (error) {
-      console.error("Failed to fetch saved codes:", error);
     }
   };
 
@@ -163,7 +160,7 @@ func main() {
       router.push("/");
     } catch (error) {
       toast.error("Logout failed");
-      console.error("Logout failed:", error);
+      // console.error("Logout failed:", error);
     }
   };
 
@@ -260,20 +257,20 @@ func main() {
                 <p className="text-gray-500 text-sm px-2 py-1">No saved files yet</p>
               ) : (
                 savedCodes.map((snippet) => (
-                  <Button
+                <Button
                     key={snippet._id}
-                    variant="ghost"
-                    className="w-full justify-start text-gray-300 hover:text-white hover:bg-orange-500/10"
+                  variant="ghost"
+                  className="w-full justify-start text-gray-300 hover:text-white hover:bg-orange-500/10"
                     onClick={() => handleLoadCode(snippet)}
-                  >
-                    <FileText className="w-4 h-4 mr-2" />
+                >
+                  <FileText className="w-4 h-4 mr-2" />
                     <div className="flex-1 text-left truncate">
                       <div className="truncate">{snippet.filename}</div>
                       <div className="text-xs text-gray-500 truncate">
                         {new Date(snippet.updatedAt).toLocaleDateString()}
                       </div>
                     </div>
-                  </Button>
+                </Button>
                 ))
               )}
             </div>
